@@ -1,4 +1,5 @@
-package R2D2Service;
+package restApi_CRUD;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -6,19 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * 
- * @author himanshu
- *	Mitchel Coding Challenge
- */
 @Entity 
-@Table(name = "vehicle" , schema="mitchell_vehicle")
+@Table(name = "vehicle" , schema="class_vehicle")
 /**
  * 
  * @class Vehicle 
  *
  */
-public class Vehicle implements Serializable {
+public class vehicle_Class implements Serializable {
 	
 	@Id
 	@Column(name = "vehicleID" , nullable = false)

@@ -1,15 +1,8 @@
-package R2D2Service;
+package restApi_CRUD;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.ws.rs.GET;
@@ -18,32 +11,26 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-/**
- * 
- * @author himanshu
- *	Mitchell coding challenge
- *	This class has all the resources for REST api (Part2)
- *	All CRUD operations can be done by web service.
- */
+
+
 @Path("/Rest_CrudOperations")
-public class rest {
+public class crud_requests {
 
 //	public static List<Vehicle> vehicles = new ArrayList<>();
 	public static HashSet<Integer> vehicleIds = new HashSet<>();
-	public static HashMap<Integer, Vehicle> vehicles = new HashMap<>();
+	public static HashMap<Integer, vehicle_Class> vehicles = new HashMap<>();
 	
 	
 	
 	@GET 
-	@Produces(MediaType.TEXT_XML)
-	
+	@Produces(MediaType.TEXT_XML)	
 	@Path("/vehicleInfo/id={id}")
 	public static String getVehicleInformation(@PathParam("id") int id)
 	{
 		String response = "" ;
 		if (vehicleIds.contains(id))
 		{
-			Vehicle v = vehicles.get(id);
+			vehicle_Class v = vehicles.get(id);
 			 response ="<?xml version='1.0'?>"+ "<VehicleInfo>"+"<vehicleID>"+id+"</vehicleID>"+
 					"<vehicleClass>"+v.getVehicleClass() +"</vehicleClass>" + "<vehicleMake>"+v.getVehicleMake()+"</vehicleMake>"+
 					"<vehicleModel>"+v.getVehicleModel()+"</vehicleModel>" +
@@ -63,11 +50,11 @@ public class rest {
 	public static String accessVehicleInfo(@PathParam("param") String par, @PathParam("value") String val)
 	{
 	
-		ArrayList<Vehicle> matchedVehicles = new ArrayList<>();
+		ArrayList<vehicle_Class> matchedVehicles = new ArrayList<>();
 		String response = "";
 		
 		if (par.equals("class")){
-		for (Entry<Integer, Vehicle> v : vehicles.entrySet())
+		for (Entry<Integer, vehicle_Class> v : vehicles.entrySet())
 		{		
 			if (v.getValue().Class.equals(val))
 			{
@@ -77,7 +64,7 @@ public class rest {
 		}
 		else if (par.equals("make"))
 		{
-			for (Entry<Integer, Vehicle> v : vehicles.entrySet())
+			for (Entry<Integer, vehicle_Class> v : vehicles.entrySet())
 			{			
 				if (v.getValue().Make.equals(val))
 				{			
@@ -87,7 +74,7 @@ public class rest {
 		}
 		else if (par.equals("model"))
 		{
-			for (Entry<Integer, Vehicle> v : vehicles.entrySet())
+			for (Entry<Integer, vehicle_Class> v : vehicles.entrySet())
 			{			
 				if (v.getValue().Model.equals(val))
 				{			
@@ -98,7 +85,7 @@ public class rest {
 		else if (par.equals("year"))
 		{
 			int year = Integer.parseInt(val);
-			for (Entry<Integer, Vehicle> v : vehicles.entrySet())
+			for (Entry<Integer, vehicle_Class> v : vehicles.entrySet())
 			{				
 			
 				if (v.getValue().Year == year)
@@ -109,7 +96,7 @@ public class rest {
 		}
 		if (!matchedVehicles.isEmpty()){
 		response = "<html> <head> <title>Vehicle Information</title> </head> <body> <UL>";
-		for (Vehicle v : matchedVehicles)
+		for (vehicle_Class v : matchedVehicles)
 		{
 			response = response + "<LI>" + "VehicleID = "+ v.getVehicleId() + ", class = "+ v.getVehicleClass()+
 					", make = "+ v.getVehicleMake()+
@@ -234,7 +221,7 @@ public class rest {
 			return response;
 		}
 		else{
-		Vehicle v = new Vehicle();
+			vehicle_Class v = new vehicle_Class();
 		int id = vehicles.size()+1 ;
 		v.setId(id);
 		v.setClass(clas);
@@ -243,7 +230,7 @@ public class rest {
 		v.setYear(year);
 		vehicles.put(id, v);
 		vehicleIds.add(v.Id);
-		String x = "<h1>Vehicle created by R2D2 successfully</h1>";
+		String x = "<h1>Vehicle created by Service Bot successfully</h1>";
 		return x;}
 		
 	}
@@ -275,12 +262,12 @@ public class rest {
 		String response = "" ;
 		if (vehicleIds.contains(id))
 		{
-			Vehicle v = vehicles.get(id);
+			vehicle_Class v = vehicles.get(id);
 			v.setClass(clas);
 			v.setMake(make);
 			v.setModel(model);
 			v.setYear(year);
-			response = "<h1>Vehicle id= "+ id+ "updated by R2D2 successfully</h1>";
+			response = "<h1>Vehicle id= "+ id+ "updated by Service Bot successfully</h1>";
 			return response;
 		}
 		else {
@@ -301,8 +288,8 @@ public class rest {
 		String response = "" ;
 		if (vehicleIds.contains(id))
 		{
-			Vehicle v = vehicles.remove(id);			
-			response = "<h1>Vehicle id= "+ id+ "removed by R2D2 successfully</h1>";
+			vehicle_Class v = vehicles.remove(id);			
+			response = "<h1>Vehicle id= "+ id+ "removed by Service Bot successfully</h1>";
 			return response;
 		}
 		else {
