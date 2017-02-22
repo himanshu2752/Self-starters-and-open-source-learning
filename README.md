@@ -1,17 +1,10 @@
-#AcademicProjects at UTD
+#REST api for CRUD operations using jersey library and http protocols
 
-- ###Projects involving implementation of advance data structures are in "Implementation of Data Strucutres and Algorithms" folder.
+####Developed on Eclipse and Java version jdk1.8.0_102
+####I have used Jersey libraries to develop the REST api. you can check them in libraries
+####I have created dynamic web project in Eclipse
+####I ran this project on Apache Tomcat V6.0
 
-- ###Projects involving algorithm analysis and data structures implementation are in "AcademicProjects_BasicAlgorithms" folder.
-
-- ###Project on database is in "Database Design" folder.
-
-- ###Projects on semantic web technologies (using Gruff, Protege, Jena, Eclipse, Java, RDF, OWL, SPARQL and LOGD) are in Semantic web folder
-
-- ###Projects on Operating system concepts (using Java and Linux) are in Operating System projects folder
-
-- ###Project in Machine Learning where we designed a algorithm based on XGBoost technique to predict the future outcomes. It was an active kaggle competetion (https://www.kaggle.com/c/bosch-production-line-performance). More details can be found in project report. Code is written on Python
-
-- ###R Projects - classifier algorithm with their analysis. Written on R and developed on R studio
-
-####Advance projects on datastrucutres are "Implementation of Data Strucutres and Algorithms".
+- ###Model - There is a Vehicle class which has class, model, make, year and Id. Other java file contains the resources for CRUD operations and URI (paths for GET requests).
+- ###Business - The Rest api through GET (http requests) can create a vehicle, delete a vehicle and update a vehicle. you can check the path for these operations and can create a URI for these operations.
+- ###Future scope - can be integrated with a database, where a schema for this can be created. Or to create the persistant objects, Serializable can be implemented and the binary file for vehicle objects can be created (using ObjectOutputStream) which can accessed later with ObjectInputStream.
