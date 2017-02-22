@@ -4,6 +4,7 @@
 ####I have used Jersey libraries to develop the REST api. you can check them in libraries
 ####I have created dynamic web project in Eclipse
 ####I ran this project on Apache Tomcat V6.0
+####you can check some sample URI(in sampleURI.txt file) to perform crud operations after running the project on the server
 
 - ###Model - There is a Vehicle class which has class, model, make, year and Id. Other java file contains the resources for CRUD operations and URI (paths for GET requests).
 
